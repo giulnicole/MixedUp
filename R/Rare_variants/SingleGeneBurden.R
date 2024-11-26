@@ -2,7 +2,7 @@
 #' @description
 #' \code{}SingleGeneBurden calculates the coefficient of gene's level burden on rare variants per each subject (glm model); cases vs controls adjusted for explicit covaiates
 #'
-#' 
+#'  @author DavideFer98
 #'
 #'
 #' @param y Sample_group

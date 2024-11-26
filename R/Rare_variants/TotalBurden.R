@@ -1,7 +1,7 @@
 #' @title TotalBurden
 #' @description
 #' \code{}TotalBurden calculates the coefficient of cumulative burden on rare variants per each subject (glm model); cases vs controls
-#'
+#'  @author DavideFer98
 #' 
 #'
 #'
