@@ -11,6 +11,7 @@
 
 TotalBurden <- function(dataset, samplesheet) {
   
+  library(tidyr)
   
   cat("Dataset must contain the ID of subject as first column; the name of the genes in all the other columns with the sum of rare variants per gene in each subjects")
   cat("Samplesheet must contain one column with sample IDs; one with: Cases/Controls (categorical); one with Sex (categorical)")  
