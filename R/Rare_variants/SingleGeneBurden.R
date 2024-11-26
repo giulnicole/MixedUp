@@ -8,10 +8,10 @@
 #' @param y Sample_group
 #' @param data.genes must contain the output from burden test for rare variants 
 #' @param data.covar must contain the covariates thathas to be added to test gene's level burden 
-#' 
+#' @param sign significance level
     
     
-SingleGeneBurden<- function(y, data.genes, data.covar){
+SingleGeneBurden<- function(y, data.genes, data.covar, sign=0.05){
   
 
    df <- data.frame(
@@ -41,9 +41,9 @@ SingleGeneBurden<- function(y, data.genes, data.covar){
    
    
    
-   # Check the significance condition
-   if (pvalue < 0.05) {
-     # Add the result to the dataframe
+   # significance condition
+   if (pvalue < sign) {
+   
      df <- rbind(df, data.frame(
          Gene = gene,
          Effect = effect,
