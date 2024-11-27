@@ -1,5 +1,10 @@
 
 
+#  #  #
+
+#  PCA  #
+
+#  #  #
 
 # Calculating PCs for accounting for confounding
 

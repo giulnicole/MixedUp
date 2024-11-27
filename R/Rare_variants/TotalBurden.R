@@ -2,7 +2,7 @@
 #' @description
 #' \code{}TotalBurden calculates the coefficient of cumulative burden on rare variants per each subject (glm model); cases vs controls
 #'  @author DavideFer98
-#' 
+#'  @author giulnicole
 #'
 #'
 #' @param dataset rows subjects, columns (from the 2nd on) total burden of genes; must contain the ID of subject as first column; the name of the genes in all the other columns with the sum of rare variants per gene in each subjects
