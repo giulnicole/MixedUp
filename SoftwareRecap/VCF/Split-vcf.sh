@@ -1,8 +1,8 @@
 # Split a vcf in 1 vcf per each chromosome
 
-vcf_in=/home/giulia.baldrighi/Desktop/mergeENDOM_CACO_clean2.vcf
+vcf_in=/home/user/Desktop/whole_chromosomes.vcf
 
-vcf_out_stem=/home/giulia.baldrighi/Desktop/by_chrom
+vcf_out_stem=/home/user/Desktop/by_chrom
 
 for i in {1..22}
 do
