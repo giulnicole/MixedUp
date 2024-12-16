@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Split a vcf in 1 vcf per each chromosome
 
 vcf_in=/home/user/Desktop/whole_chromosomes.vcf
