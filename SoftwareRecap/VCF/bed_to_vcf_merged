@@ -1,0 +1,81 @@
+# In the folder with all the bed files
+
+# From bed files of epimutations 
+
+for file in *.bed; do                                                                                                                                                                                                                                                                      grep -v -h '^#' $file > "$(basename "$file" .vcf).ID"; 
+done
+
+
+ls *.ID|xargs -I% sed -i 's/$/\t%/' %
+
+cat *.ID > temp0
+
+awk -F'\t' '{print $1"-"$2"-"$3}' temp0 > temp1
+
+awk -F '\t' '{print $1}' temp1 | sort | uniq -c | sort -nr > temp1x
+
+awk -F' ' '{print $2, $1}' temp1x > temp1xx
+
+
+sort -k1 temp1 > temp1.1
+sort -k1 temp1xx > temp1xx.1
+
+join -a 1 -a 1 temp1.1 temp1xx.1 > temp1.2a
+awk -F"\t" '!_[$1,$2,$3]++' temp1.2a > temp1.2
+paste temp1 temp0 > temp3
+
+awk '{$1=""; sub(/^\t/, ""); print}' temp3 > temp3.2
+awk '{$2=""; sub(/^\t/, ""); print}' temp3.2 > temp3.3
+
+cut -c4- temp3.3 > temp3.4
+
+sort -k1 temp3.4 > temp4
+sort -k1 temp1.2 > temp5
+
+
+join -a 1 -a 1 temp4 temp5 | awk -F' ' '{print $1,$2,$3,$4,$6,$5,$7}' > temp1000
+awk -v OFS="\t" '$1=$1' temp1000 >  MULTIPLE.DGV
+
+
+awk -F"\t" '!_[$1,$2,$3,$4]++' temp0 > ANNOTATION_INDEX.DGV
+
+rm -f, yes | rm *.ID
+rm -f, yes | rm temp*
+
+# file RVTEST MULTIPLE
+
+join -t " " -a 1 -a 1 temp4 temp5 -o 1.1,1.2,1.3,1.4,1.5,1.6,1.7,2.1,2.2,2.3,2.4,2.5 > temp1000
+awk -v OFS="\t" '$1=$1' temp1000 >  EPIM_BED_MLTPL.bed
+
+
+
+
+sed -e "s/@/\t/"   temp0  | sed -e "s/@/\t/" |sed -e "s/@/\t/" |sed -e "s/@/\t/" |sed -e "s/@/\t/" |sed -e "s/@/\t/" | sed -e "s/@/\t/" |sed -e "s/@/\t/" |sed -e "s/@/\t/" |sed -e "s/@/\t/" |sed -e "s/@/\t/" | sed -e "s/ /\t/"  | sed -e "s/ /\t/" > tempxx 
+
+
+sed -e "s/ /\t/" tempxx > EPIM_BED_MLTPL.vcf
+
+
+for file in *.bed; do        
+awk -F'\t' '{print $1,$2,"rs1208179@C@T@14.92@.@PR@GT@0/1",$4}' $file | sed -e "s/@/\t/"  | sed -e "s/@/\t/" |sed -e "s/@/\t/" |sed -e "s/@/\t/" |sed -e "s/@/\t/" |sed -e "s/@/\t/" | sed -e "s/@/\t/" |sed -e "s/@/\t/" |sed -e "s/@/\t/" |sed -e "s/@/\t/" |sed -e "s/@/\t/" | sed -e "s/ /\t/"  | sed -e "s/ /\t/"  | sed -e "s/ /\t/" | sed -e "s/ /\t/" > "$(basename "$file" .bed).tmp.vcf"; 
+done 
+
+for file in *.tmp.vcf; do
+    header='##fileformat=VCFv4.3\n##reference=GRCh37\n##INFO=<ID=PR,Number=0,Type=Flag,Description="Provisional reference allele, may not be based on real reference genome">\n##FORMAT=<ID=GT,Number=1,Type=String,Description="Genotype">\n#CHROM\tPOS\tID\tREF\tALT\tQUAL\tFILTER\tINFO\tFORMAT\t'"$(basename "$file" .tmp.vcf)" ;
+    echo -e "$header" | cat - "$file" > "$(basename "$file" .tmp.vcf).vcf";
+done
+
+
+for file in *.vcf; do     bgzip "$file";     tabix "${file}.gz"; done
+
+
+# merging files
+ls *ED.vcf.gz > vcf_list.txt
+bcftools merge -l vcf_list.txt -o merged.vcf
+
+
+# changing ./. into 0/0
+awk '{gsub("./.", "0/0"); print}' input.vcf > output.vcf
+
+awk '{gsub("chrchr", "chr"); print}' input.vcf > output.vcf
+
