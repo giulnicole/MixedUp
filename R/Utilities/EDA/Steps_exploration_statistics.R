@@ -1,15 +1,19 @@
-
-# Comprehensive Exploratory Data Analysis in R with Results Tables
-
-# Load necessary packages
-library(dplyr)
-library(ggplot2)
-library(tidyr)
-library(corrplot)
-library(car)
-library(nortest)
-
-# Function for comprehensive EDA with results tables
+#' @title exploratory_data_analysis
+#' @description
+#' \code{} Steps for data exploration
+#'
+#' @import dplyr
+#' @import ggplot2
+#' @import tidyr
+#' @import car
+#' @import nortest
+#' @import corrplot
+#'
+#' @param data Data frame
+#' 
+#' 
+#' @name exploratory_data_analysis
+#
 exploratory_data_analysis <- function(data, output_file = NULL) {
   # Initialize results lists
   results <- list()
