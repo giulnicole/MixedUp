@@ -1,6 +1,2 @@
 # MixedUp
-
-Repository of self-made functions and reminder for analyses' steps you may need
-
-
-Please have a look and take care!
+A personal repository of custom R functions and structured reminders to streamline and document recurring analysis workflows. This package serves as a toolkit and checklist for commonly used analytical steps, helping ensure consistency, reproducibility, and efficiency in your data analysis pipeline.
