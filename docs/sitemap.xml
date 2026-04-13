@@ -1,0 +1,16 @@
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>/404.html</loc></url>
+<url><loc>/authors.html</loc></url>
+<url><loc>/index.html</loc></url>
+<url><loc>/reference/correlation_analysis.html</loc></url>
+<url><loc>/reference/data.html</loc></url>
+<url><loc>/reference/generate_demographic_tables.html</loc></url>
+<url><loc>/reference/index.html</loc></url>
+<url><loc>/reference/run_plsda_clean.html</loc></url>
+<url><loc>/reference/run_univariate_logistic.html</loc></url>
+<url><loc>/reference/run_univariate_logistic_repeated.html</loc></url>
+<url><loc>/reference/similarity_analysis.html</loc></url>
+<url><loc>/reference/stratified_distance_analysis.html</loc></url>
+<url><loc>/reference/test_with_levene.html</loc></url>
+</urlset>
+
